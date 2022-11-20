@@ -1,0 +1,42 @@
+server:
+  port: 8081
+
+spring:
+  application.name: url-shortener
+  jpa:
+    hibernate.ddl-auto: none
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 10
+          fetch_size: 20
+          order_inserts: true
+          order_updates: true
+        generate_statistics: true
+  datasource:
+    url: jdbc:postgresql://localhost:8432/postgres
+    username: postgres
+    password: password
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 1
+      connection-test-query: SELECT 1
+      validation-timeout: 3500
+      max-lifetime: 1200000
+      idle-timeout: 13000
+      connection-timeout: 20000
+  liquibase:
+    change-log: classpath:db/changelog/dbchangelog.yaml
+    default-schema: public
+    enabled: true
+    drop-first: false
+
+logging:
+  level:
+    org.hibernate: INFO
+    en.builin.urlshortener.logging: DEBUG
+  logback:
+    rollingpolicy:
+      max-file-size: 2MB
+  file:
+    name: logs/application.log
