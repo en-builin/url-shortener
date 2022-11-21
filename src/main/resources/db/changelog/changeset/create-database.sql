@@ -7,3 +7,20 @@ create table links
 
 alter table links
     owner to postgres;
+
+create table stats
+(
+    id    bigint not null
+        primary key
+        constraint fk9wbi4oet2gf4nqiuvrnay644p
+            references links,
+    count      integer,
+    short_link varchar(255)
+);
+
+alter table stats
+    owner to postgres;
+
+create index idxnin2ivkw0bw93rp699vgn2w5h
+    on stats (short_link);
+

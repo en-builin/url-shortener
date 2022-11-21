@@ -7,5 +7,5 @@ public interface LinksService {
 
     LinkDto generateLink(OriginalDto originalDto);
 
-    OriginalDto getLink(String key);
+    OriginalDto originalByShortLink(String shortLink);
 }
